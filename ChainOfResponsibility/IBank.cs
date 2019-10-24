@@ -4,9 +4,9 @@ using System.Text;
 
 namespace ChainOfResponsibility
 {
-    interface IBank
+    public interface IBank
     {
-        abstract void process();
-        abstract void doNext(IBank nextStage);
+        abstract void Process();
+        abstract void SetNext(IBank nextStage);
     }
 }

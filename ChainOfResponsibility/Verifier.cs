@@ -4,12 +4,12 @@ namespace ChainOfResponsibility
 {
     public class Verifier : IBank
     {
-        public void doNext(IBank nextStage)
+        public void SetNext(IBank nextStage)
         {
             throw new NotImplementedException();
         }
 
-        public void process()
+        public void Process()
         {
             throw new NotImplementedException();
         }
