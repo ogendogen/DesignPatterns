@@ -4,17 +4,17 @@ namespace ChainOfResponsibility
 {
     public class Verifier : IBank
     {
-        public IBank NextStage { get; set; }
+        private IBank _nextStage;
         public void SetNext(IBank nextStage)
         {
-            NextStage = nextStage;
+            _nextStage = nextStage;
         }
 
         public void Process(CreditRequest creditRequest, ref string errorMessage)
         {
             if (IsDataVerified(creditRequest))
             {
-                NextStage.Process(creditRequest, ref errorMessage);
+                _nextStage.Process(creditRequest, ref errorMessage);
             }
             else
             {
