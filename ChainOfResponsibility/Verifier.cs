@@ -22,14 +22,35 @@ namespace ChainOfResponsibility
             }
         }
 
-        public bool IsDataVerified(CreditRequest creditRequest)
+        private bool IsDataVerified(CreditRequest creditRequest)
         {
-            return IsPersonalDataValid(creditRequest.Requester);
+            return IsPersonalDataValid(creditRequest.Requester) &&
+                   AreNamesCorrect(creditRequest.Requester) &&
+                   IsEmployed(creditRequest.Requester) &&
+                   IsProperIncome(creditRequest.Requester);
         }
 
-        public bool IsPersonalDataValid(Person person)
+        private bool IsPersonalDataValid(Person person)
         {
-            return !String.IsNullOrEmpty(person.Name) || !String.IsNullOrEmpty(person.LastName) || person.Age >= 18;
+            return !String.IsNullOrEmpty(person.Name) || 
+                   !String.IsNullOrEmpty(person.LastName) || 
+                   person.Age >= 18;
+        }
+
+        private bool AreNamesCorrect(Person person)
+        {
+            return Char.IsUpper(person.Name[0]) &&
+                   Char.IsUpper(person.LastName[0]);
+        }
+
+        private bool IsEmployed(Person person)
+        {
+            return person.EmploymentType != Types.Employment.None;
+        }
+
+        private bool IsProperIncome(Person person)
+        {
+            return person.MonthIncome > 2000;
         }
     }
 }
