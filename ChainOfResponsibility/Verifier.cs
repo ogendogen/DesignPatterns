@@ -10,15 +10,15 @@ namespace ChainOfResponsibility
             _nextStage = nextStage;
         }
 
-        public void Process(CreditRequest creditRequest, ref string errorMessage)
+        public void Process(CreditRequest creditRequest, ref string returnMessage)
         {
-            if (IsDataVerified(creditRequest))
+            if (IsDataVerified(creditRequest) && _nextStage != null)
             {
-                _nextStage.Process(creditRequest, ref errorMessage);
+                _nextStage.Process(creditRequest, ref returnMessage);
             }
             else
             {
-                errorMessage = "Verifier failed";
+                returnMessage = "Verifier failed";
             }
         }
 

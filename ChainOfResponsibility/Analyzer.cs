@@ -6,15 +6,15 @@ namespace ChainOfResponsibility
     public class Analyzer : IBank
     {
         private IBank _nextStage;
-        public void Process(CreditRequest creditRequest, ref string errorMessage)
+        public void Process(CreditRequest creditRequest, ref string returnMessage)
         {
-            if (IsAnalysisFine(creditRequest))
+            if (IsAnalysisFine(creditRequest) && _nextStage != null)
             {
-                _nextStage.Process(creditRequest, ref errorMessage);
+                _nextStage.Process(creditRequest, ref returnMessage);
             }
             else
             {
-                errorMessage = "Analyzer failed";
+                returnMessage = "Analyzer failed";
             }
         }
 

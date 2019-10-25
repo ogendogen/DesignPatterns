@@ -6,7 +6,7 @@ namespace ChainOfResponsibility
 {
     public interface IBank
     {
-        abstract void Process(CreditRequest creditRequest, ref string errorMessage);
+        abstract void Process(CreditRequest creditRequest, ref string returnMessage);
         abstract void SetNext(IBank nextStage);
     }
 }
