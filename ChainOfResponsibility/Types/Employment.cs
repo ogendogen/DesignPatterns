@@ -5,6 +5,7 @@
         Permanent,
         Order,
         Contract,
-        Temporary
+        Temporary,
+        None
     }
 }
