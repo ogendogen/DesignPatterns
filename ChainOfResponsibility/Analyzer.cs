@@ -9,12 +9,24 @@ namespace ChainOfResponsibility
         private IBank _nextStage;
         public void Process(CreditRequest creditRequest, ref string errorMessage)
         {
-            throw new NotImplementedException();
+            if (IsAnalysisFine(creditRequest))
+            {
+                _nextStage.Process(creditRequest, ref errorMessage);
+            }
+            else
+            {
+                errorMessage = "Analyzer failed";
+            }
         }
 
         public void SetNext(IBank nextStage)
         {
             _nextStage = nextStage;
+        }
+
+        public bool IsAnalysisFine(CreditRequest creditRequest)
+        {
+            throw new NotImplementedException();
         }
     }
 }
