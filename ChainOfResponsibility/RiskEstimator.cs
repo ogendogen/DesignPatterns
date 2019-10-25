@@ -28,19 +28,19 @@ namespace ChainOfResponsibility
             {
                 case RiskLevel.Low:
                     {
-                        return creditRequest.Amount <= 500000 && creditRequest.Percentage >= 15.0 && creditRequest.TimeInMonths >= 36;
+                        return creditRequest.Amount <= 500000 && creditRequest.Percentage >= 6.0 && creditRequest.TimeInMonths >= 12;
                     }
                 case RiskLevel.Normal:
                     {
-                        return creditRequest.Amount <= 250000 && creditRequest.Percentage >= 12.0 && creditRequest.TimeInMonths >= 24;
+                        return creditRequest.Amount <= 250000 && creditRequest.Percentage >= 10.0 && creditRequest.TimeInMonths >= 24;
                     }
                 case RiskLevel.High:
                     {
-                        return creditRequest.Amount <= 100000 && creditRequest.Percentage >= 10.0 && creditRequest.TimeInMonths >= 24;
+                        return creditRequest.Amount <= 100000 && creditRequest.Percentage >= 12.0 && creditRequest.TimeInMonths >= 24;
                     }
                 case RiskLevel.VeryHigh:
                     {
-                        return creditRequest.Amount <= 75000 && creditRequest.Percentage >= 8.0 && creditRequest.TimeInMonths >= 12;
+                        return creditRequest.Amount <= 75000 && creditRequest.Percentage >= 15.0 && creditRequest.TimeInMonths >= 36;
                     }
                 default:
                     {
