@@ -6,9 +6,9 @@ namespace ChainOfResponsibility.Types
 {
     public enum CreditHistory
     {
-        Excellent,
-        Good,
-        Average,
-        Bad
+        Excellent = 3,
+        Good = 2,
+        Average = 1,
+        Bad = 0
     }
 }

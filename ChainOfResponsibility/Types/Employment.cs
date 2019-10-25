@@ -2,10 +2,10 @@
 {
     public enum Employment
     {
-        Permanent,
-        Order,
-        Contract,
-        Temporary,
-        None
+        Permanent = 4,
+        Order = 3,
+        Contract = 2,
+        Temporary = 1,
+        None = 0
     }
 }
