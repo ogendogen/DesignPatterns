@@ -9,5 +9,6 @@ namespace ChainOfResponsibility
         public int Age { get; set; }
         public double MonthIncome { get; set; }
         public Employment EmploymentType { get; set; }
+        public bool HasAlreadyCredit { get; set; }
     }
 }
