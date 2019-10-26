@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesignPatterns", "DesignPat
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChainOfResponsibility", "ChainOfResponsibility\ChainOfResponsibility.csproj", "{A571BBDC-A137-41CE-8467-9FC78C1671C9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Builder", "Builder\Builder.csproj", "{D31D5A58-3D1C-43D9-A67C-E7566EF21FC8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{A571BBDC-A137-41CE-8467-9FC78C1671C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A571BBDC-A137-41CE-8467-9FC78C1671C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A571BBDC-A137-41CE-8467-9FC78C1671C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D31D5A58-3D1C-43D9-A67C-E7566EF21FC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D31D5A58-3D1C-43D9-A67C-E7566EF21FC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D31D5A58-3D1C-43D9-A67C-E7566EF21FC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D31D5A58-3D1C-43D9-A67C-E7566EF21FC8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
