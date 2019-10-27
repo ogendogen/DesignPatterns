@@ -3,11 +3,8 @@ using Composite.Types;
 
 namespace Composite
 {
-    public class VAN : IVehicle
+    public class VAN : Vehicle, IVehicle
     {
-        public int ID { get; set; }
-        public Status Status { get; set; }
-
         public void GoBackToFleet()
         {
             throw new NotImplementedException();
