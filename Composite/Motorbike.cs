@@ -1,12 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using Composite.Types;
 
 namespace Composite
 {
     public class Motorbike : IVehicle
     {
         public int ID { get; set; }
+        public Status Status { get; set; }
 
         public void GoBackToFleet()
         {
