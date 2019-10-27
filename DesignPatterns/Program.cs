@@ -1,6 +1,7 @@
 ﻿using System;
 using ChainOfResponsibility;
 using ChainOfResponsibility.Types;
+using Builder;
 
 namespace DesignPatterns
 {
@@ -9,6 +10,7 @@ namespace DesignPatterns
         static void Main(string[] args)
         {
             ChainOfResponsibility();
+            Builder();
         }
 
         private static void ChainOfResponsibility()
@@ -62,6 +64,26 @@ namespace DesignPatterns
 
             verifier.Process(creditRequest2, ref refMessage);
             Console.WriteLine($"Mark Mason credit request result: { refMessage }");
+        }
+
+        private static void Builder()
+        {
+            Console.WriteLine();
+            Console.WriteLine("2. BUILDER");
+
+            CoffeeMachine coffeeMachine = new CoffeeMachine();
+
+            Coffee cappucino = coffeeMachine.GetBigCappuccinoWithOneSpoon();
+            Console.WriteLine(cappucino.ToString());
+            Console.WriteLine();
+
+            Coffee espresso = coffeeMachine.GetBigEspressoWithTwoSpoonsAndCinamon();
+            Console.WriteLine(espresso.ToString());
+            Console.WriteLine();
+
+            Coffee latte = coffeeMachine.GetSmallLatteWithNoSugarExtraMilkAndDoubleCoffee();
+            Console.WriteLine(latte.ToString());
+            Console.WriteLine();
         }
     }
 }
