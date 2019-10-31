@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Composite
 {
-    interface IVehicle
+    public interface IVehicle
     {
         void GoForClient();
         void GoBackToFleet();
