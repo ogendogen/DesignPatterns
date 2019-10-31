@@ -2,6 +2,8 @@
 using ChainOfResponsibility;
 using ChainOfResponsibility.Types;
 using Builder;
+using Composite;
+using Composite.Types;
 
 namespace DesignPatterns
 {
@@ -11,8 +13,10 @@ namespace DesignPatterns
         {
             ChainOfResponsibility();
             Builder();
+            Composite();
         }
 
+        #region ChainOfResponsibility
         private static void ChainOfResponsibility()
         {
             Console.WriteLine("1. CHAIN OF RESPONSIBILITY");
@@ -65,7 +69,9 @@ namespace DesignPatterns
             verifier.Process(creditRequest2, ref refMessage);
             Console.WriteLine($"Mark Mason credit request result: { refMessage }");
         }
+        #endregion
 
+        #region Builder
         private static void Builder()
         {
             Console.WriteLine();
@@ -85,5 +91,119 @@ namespace DesignPatterns
             Console.WriteLine(latte.ToString());
             Console.WriteLine();
         }
+        #endregion
+
+        #region Composite
+        private static void Composite()
+        {
+            Console.WriteLine();
+            Console.WriteLine("3. COMPOSITE");
+
+            Fleet fleet = new Fleet();
+            Car car = new Car
+            {
+                ID = 1,
+                Status = Status.InFleet,
+            };
+            car.StatusChanged += VehicleStatusChanged;
+
+            Car car2 = new Car
+            {
+                ID = 2,
+                Status = Status.InFleet
+            };
+            car2.StatusChanged += VehicleStatusChanged;
+
+            VAN van = new VAN
+            {
+                ID = 3,
+                Status = Status.InFleet
+            };
+            van.StatusChanged += VehicleStatusChanged;
+
+            Motorbike motorbike = new Motorbike
+            {
+                ID = 4,
+                Status = Status.InFleet
+            };
+            motorbike.StatusChanged += VehicleStatusChanged;
+
+            fleet.AddVehicle(car);
+            fleet.AddVehicle(car);
+            fleet.AddVehicle(van);
+            fleet.AddVehicle(motorbike);
+
+            fleet.GoForClient();
+            fleet.StandBy();
+        }
+
+        private static void VehicleStatusChanged(object sender, EventArgs e)
+        {
+            IVehicle vehicle = (IVehicle)sender;
+            if (vehicle is Car car)
+            {
+                switch(car.Status)
+                {
+                    case Status.InFleet:
+                        {
+                            Console.WriteLine($"Car with ID {car.ID} moved to fleet");
+                            break;
+                        }
+                    case Status.StandBy:
+                        {
+                            Console.WriteLine($"Car with ID {car.ID} stand by");
+                            break;
+                        }
+                    case Status.Working:
+                        {
+                            Console.WriteLine($"Car with ID {car.ID} went for a client");
+                            break;
+                        }
+                }
+            }
+            else if (vehicle is VAN van)
+            {
+                switch(van.Status)
+                {
+                    case Status.InFleet:
+                        {
+                            Console.WriteLine($"VAN with ID {van.ID} moved to fleet");
+                            break;
+                        }
+                    case Status.StandBy:
+                        {
+                            Console.WriteLine($"VAN with ID {van.ID} stand by");
+                            break;
+                        }
+                    case Status.Working:
+                        {
+                            Console.WriteLine($"VAN with ID {van.ID} went for a client");
+                            break;
+                        }
+                }
+            }
+            else if (vehicle is Motorbike motorbike)
+            {
+                switch(motorbike.Status)
+                {
+                    case Status.InFleet:
+                        {
+                            Console.WriteLine($"Motorbike with ID {motorbike.ID} moved to fleet");
+                            break;
+                        }
+                    case Status.StandBy:
+                        {
+                            Console.WriteLine($"Motorbike with ID {motorbike.ID} stand by");
+                            break;
+                        }
+                    case Status.Working:
+                        {
+                            Console.WriteLine($"Motorbike with ID {motorbike.ID} went for a client");
+                            break;
+                        }
+                }
+            }
+        }
+        #endregion
     }
 }
