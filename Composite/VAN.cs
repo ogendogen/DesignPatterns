@@ -7,17 +7,17 @@ namespace Composite
     {
         public void GoBackToFleet()
         {
-            throw new NotImplementedException();
+            Status = Status.InFleet;
         }
 
         public void GoForClient()
         {
-            throw new NotImplementedException();
+            Status = Status.Working;
         }
 
         public void StandBy()
         {
-            throw new NotImplementedException();
+            Status = Status.StandBy;
         }
     }
 }
